@@ -14,17 +14,5 @@ jobs:
          repository: 'MechaSpin/parakeet-devtools'
          path: 'parakeet-devtools'
          token: ${{ secrets.DEVTOOLS_ACCESS_TOKEN }}
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: execute copyright python script
-        run: |
-          python ./parakeet-devtools/parakeet_copyright.py
-      - name: Push changes to git
-        run: |
-          cd parakeet/
-          git config --global user.name 'CopyrightGitHubAction'
-          git config --global user.email 'build@mechaspin.com'
-          git commit -am "Add Copyright Information" || exit 0
-          git push
+      - name: Run Copyright Action
+        uses: ./parakeet-devtools/copyright_action/copyright_action.yaml
