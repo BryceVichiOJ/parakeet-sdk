@@ -4,7 +4,7 @@ on: [push]
 
 env:
   DEVTOOLS_REPO: BryceVichiOJ/parakeet-devtools
-  PERSONAL_ACCESS_TOKEN: ${{ secrets.Parakeet_PAT }}
+  PERSONAL_ACCESS_TOKEN: ${{ secrets.PARAKEET_PAT }}
 
 jobs:
   Explore-GitHub-Actions:
@@ -20,6 +20,6 @@ jobs:
          repository: ${{ env.DEVTOOLS_REPO }}
          ref: main
          path: 'parakeet-devtools'
-         token: ${{ env.PERSONAL_ACCESS_TOKEN || github.token }}
+         token: ${{ env.PERSONAL_ACCESS_TOKEN }}
       - name: Run Copyright Action
         uses: ./parakeet-devtools/copyright_action/copyright_action.yaml
