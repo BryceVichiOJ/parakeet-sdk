@@ -23,4 +23,4 @@ jobs:
          path: 'parakeet-devtools'
          token: ${{ env.PERSONAL_ACCESS_TOKEN }}
       - name: Run Copyright Action
-        uses: ./parakeet-devtools/copyright_action/copyright_action.yaml
+        uses: ./parakeet-devtools/copyright_action/
