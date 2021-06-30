@@ -4,6 +4,7 @@ on: [push]
 
 env:
   DEVTOOLS_REPO: BryceVichiOJ/parakeet-devtools
+  DEVTOOLS_REPO_BRANCH: master
   PERSONAL_ACCESS_TOKEN: ${{ secrets.PARAKEET_PAT }}
 
 jobs:
@@ -18,7 +19,7 @@ jobs:
         uses: actions/checkout@v2
         with:
          repository: ${{ env.DEVTOOLS_REPO }}
-         ref: main
+         ref: ${{ env.DEVTOOLS_REPO_BRANCH }}
          path: 'parakeet-devtools'
          token: ${{ env.PERSONAL_ACCESS_TOKEN }}
       - name: Run Copyright Action
