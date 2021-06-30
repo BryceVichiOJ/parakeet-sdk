@@ -1,18 +1,24 @@
-name: Add Copyright Information Action
+name: Run Copyright Information Action
+
 on: [push]
+
+env:
+  DEVTOOLS_REPO: 'BryceVichiOJ/parakeet-devtools'
+  PERSONAL_ACCESS_TOKEN: ${{ secrets.Parakeet_PAT }}
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
+      - name: Clone active repository/branch
         uses: actions/checkout@v2
         with:
          path: parakeet
-      - name: Clone python script repo
+      - name: Clone devtools repository
         uses: actions/checkout@v2
         with:
-         repository: 'MechaSpin/parakeet-devtools'
+         repository: ${{ env.DEVTOOLS_REPO }}
          path: 'parakeet-devtools'
-         token: ${{ secrets.DEVTOOLS_ACCESS_TOKEN }}
+         token: ${{ env.PERSONAL_ACCESS_TOKEN }}
       - name: Run Copyright Action
         uses: ./parakeet-devtools/copyright_action/copyright_action.yaml
