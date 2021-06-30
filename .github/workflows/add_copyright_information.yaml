@@ -20,5 +20,6 @@ jobs:
          repository: ${{ env.DEVTOOLS_REPO }}
          ref: main
          path: 'parakeet-devtools'
+         token: ${{ env.PERSONAL_ACCESS_TOKEN || github.token }}
       - name: Run Copyright Action
         uses: ./parakeet-devtools/copyright_action/copyright_action.yaml
